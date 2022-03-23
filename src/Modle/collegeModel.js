@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-// const idStore = mongoose.Schema.Types.ObjectId
 
 const collegeModel = new mongoose.Schema({
     name:{
@@ -12,10 +11,12 @@ const collegeModel = new mongoose.Schema({
     fullName:{
         type:String,
         required: [true,"fullName is required !"],
+        trim:true
     },
     logoLink:{
         type:String,
         required: [true,"logoLink is required !"],
+        trim:true
     },
     isDeleted:{ type:Boolean,
    

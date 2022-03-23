@@ -7,11 +7,13 @@ const internModel = new mongoose.Schema({
     name:{
         type:String,
         required: [true ,"Name is required !" ],
+        trim:true
     },
     email:{
         type:String,
         required:true,
         unique:true,
+        trim:true,
         validate:{
               validator: validator.isEmail,
               message: '{VALUE} is not a valid email',
@@ -31,7 +33,8 @@ const internModel = new mongoose.Schema({
     collegeId:{
         type:object,
         ref:'college',
-        required:[true, "collegeId is required !" ]
+        required:[true, "collegeId is required !" ],
+        trim:true,
     },
     isDeleted:{
      type:Boolean,

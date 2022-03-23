@@ -29,10 +29,10 @@ const getDetails = async function (req, res) {
         {
             let coll_name = req.query.collegeName
             if(!coll_name) return res.status(400).send({status:false , message:"please enter collage name"})
-            let data = await collegeModel.findOne({ name: coll_name })
+            let data = await collegeModel.findOne({ name: coll_name }).select({name:true ,fullName:true , logoLink:true})
             if (!data)  return res.status(403).send({ status: false, message:"The value is Invalid"});
             const C_id = data._id
-            let internDetails = await internModel.find({ collegeId: C_id, isDeleted: false })
+            let internDetails = await internModel.find({ collegeId: C_id, isDeleted: false }).select({name:true , email:true ,mobile:true})
             res.send({ data: data, interests: internDetails })
         }
     } catch (err) {
