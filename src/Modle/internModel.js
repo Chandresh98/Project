@@ -7,13 +7,15 @@ const internModel = new mongoose.Schema({
     name:{
         type:String,
         required: [true ,"Name is required !" ],
-        trim:true
+        trim:true,
+        lowercase: true,
     },
     email:{
         type:String,
         required:true,
         unique:true,
         trim:true,
+        lowercase: true,
         validate:{
               validator: validator.isEmail,
               message: '{VALUE} is not a valid email',

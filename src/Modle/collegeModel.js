@@ -11,7 +11,8 @@ const collegeModel = new mongoose.Schema({
     fullName:{
         type:String,
         required: [true,"fullName is required !"],
-        trim:true
+        trim:true,
+        lowercase: true
     },
     logoLink:{
         type:String,
