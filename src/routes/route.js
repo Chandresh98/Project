@@ -14,7 +14,7 @@ router.post("/createAuthor",authorController.author)  // create author
 router.post("/createBlogs",middleWere.authenticate,blogsController.blogs) // create blog
 
 // ### GET /blogs:
-router.get("/getBlogs",middleWere.authenticate,blogsController.getBlog)  // find blog by quary in authorid,catagory,subcatagory and tags
+router.get("/getBlogs", middleWere.authenticate, blogsController.getBlog)  // find blog by quary in authorid,catagory,subcatagory and tags
 
 // ### PUT /blogs/:blogId:
 router.put("/blogs/:blogId",middleWere.authenticate,middleWere.authorise, blogsController.updateBlog) // update blog by params by giving element in body

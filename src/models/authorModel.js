@@ -3,20 +3,20 @@ const validator = require("validator");
 const authorSchema = new mongoose.Schema({
     firstname:{
         type:String,
-        required:true
+        required:[true , "firstname is required"]
     },
     lastname:{
         type:String,
-        required:true
+        required:[true , "lastname is required"]
     },
     title:{
         type:String,
-        required:true,
+        required:[true , "title is required"],
         enum:["Mr", "Mrs", "Miss"]
     },
     email:{
         type:String,
-        required:true,
+        required:[true , "email is required"],
         unique:true,
         validate:{
               validator: validator.isEmail,
@@ -26,7 +26,7 @@ const authorSchema = new mongoose.Schema({
         },        
     password:{
         type:String,
-        required:true
+        required:[true , "password is required"]
     },
     
 },{timestamps: true});

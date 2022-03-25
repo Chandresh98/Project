@@ -11,10 +11,10 @@ const author = async function(req,res){
             res.status(201).send({ msg: savedData });
           }
           else {
-            res.status(400).send({ msg: "BAD REQUEST" })
+            res.status(400).send({status:false ,msg: "Data is Requried" })
           }
     }catch(err){
-    res.status(500).send({status:false ,Error:err});
+    res.status(500).send({status:false ,Error:err.message});
 }
 }
 
@@ -44,7 +44,7 @@ const loginAuthor = async function (req, res) {
   res.setHeader("x-api-key", token);
   res.status(200).send({ status: true, data: token });
 }catch(err){
-  res.status(500).send({status:false ,Error:err});
+  res.status(500).send({status:false ,Error:err.message});
 }
 }
 

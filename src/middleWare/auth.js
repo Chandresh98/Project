@@ -16,7 +16,7 @@ const authenticate = function (req, res, next) {
       next()
    } 
    catch (err) {
-      res.status(500).send({ status: false, Error: err });
+      res.status(500).send({ status: false, Error: err.message });
    }
 }
 
@@ -35,11 +35,11 @@ const authenticate = function (req, res, next) {
          if (!decodedToken)
             return res.status(400).send({ status: false, msg: "token is invalid" });
          let decoded = decodedToken.userId
-         if (authorId != decoded) res.status(400).send({ status: false, msg: "anthentication denied" })
+         if (authorId != decoded) return res.status(400).send({ status: false, msg: "anthentication denied" })
          next()
       } 
       catch (err) {
-         res.status(500).send({ status: false, Error: err });
+         res.status(500).send({ status: false, Error: err.message});
       }
    }
 
@@ -53,11 +53,11 @@ const authenticate = function (req, res, next) {
             if (!decodedToken)
                return res.status(400).send({ status: false, msg: "token is invalid" });
             let decoded = decodedToken.userId
-            if (authodid != decoded) res.status(400).send({ status: false, msg: "anthentication denied" })
+            if (authodid != decoded) return res.status(400).send({ status: false, msg: "anthentication denied" })
             next()
          }
       catch (err) {
-         res.status(500).send({ status: false, Error: err });
+         res.status(500).send({ status: false, Error: err.message });
       }
    }
 
