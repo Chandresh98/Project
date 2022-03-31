@@ -16,7 +16,7 @@ const jwt = require("jsonwebtoken");
             
             }
 
-        }else{ return res.status(400).send({ERROR:"Token Missing"})}   
+        }else{ return res.status(401).send({ERROR:"Token Missing"})}   
 
 
 

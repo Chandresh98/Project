@@ -17,7 +17,7 @@ const bookModel = new mongoose.Schema({
     userId: {
         type: ObjectId,
         required: true,
-        ref: "usermbook"
+        ref: "userCollection"
     }, //refs to user model},
     ISBN: {
         type: String,
@@ -39,7 +39,6 @@ const bookModel = new mongoose.Schema({
     }, // comment: Holds number of reviews of this book},
     deletedAt: {
         type: Date,
-        default: ""
     }, //when the document is deleted},
     isDeleted: {
         type: Boolean,
@@ -52,4 +51,4 @@ const bookModel = new mongoose.Schema({
     }, //format("YYYY-MM-DD")},
 });
 
-module.exports = mongoose.model("bookmdata", bookModel);
+module.exports = mongoose.model("bookCollection", bookModel);

@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose")
 
 const userModel = new mongoose.Schema({
@@ -20,18 +19,12 @@ const userModel = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        validate: {
-            validator: function (v) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-            },
-            message: "Please enter a valid email"
-        },
         unique: true
     },
     password: {
         type: String,
         required: true,
-        minlength: [5, "Input more than 5 charachter"],
+        minlength: [8, "Input more than 8 charachter"],
         maxlength: [15, "Enter less than 15 characters"]
     },
     address: {
@@ -47,4 +40,4 @@ const userModel = new mongoose.Schema({
     }
 
 })
-module.exports = mongoose.model("usermbook", userModel)
+module.exports = mongoose.model("userCollection", userModel)
