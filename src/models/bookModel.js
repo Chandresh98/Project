@@ -8,33 +8,40 @@ const bookModel = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        trim:true
         
     },
     excerpt: {
         type :String,
-        required: true
+        required: true,
+        trim:true
     },
     userId: {
         type: ObjectId,
         required: true,
-        ref: "userCollection"
+        ref: "userCollection",
+        trim:true
     }, //refs to user model},
     ISBN: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        trim:true
     },
     category: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     subcategory: {
         type: String,
-        required: true
+        required: true,
+        trim:true
     },
     reviews: {
         tyep: Number,
         default: 0,
+        trim:true
        // comment: []
     }, // comment: Holds number of reviews of this book},
     deletedAt: {
