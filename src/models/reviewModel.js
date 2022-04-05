@@ -5,19 +5,18 @@ const reviewModel = new mongoose.Schema({
     bookId: {
         type: ObjectId,
         required: true,
-        ref: "bookCollection",
-        trim:true
+        ref: "bookmdata"
     },
     reviewedBy: {
         type: String,
-        required: true,
+       
         default: "Guest",
         trim:true
-       // value: {type: String },
-    }, //reviewer's name},
+       
+    }, 
     reviewedAt: {
         type: Date,
-        required: true,
+        required: true
     },
     rating: {
         type: Number,
@@ -28,11 +27,12 @@ const reviewModel = new mongoose.Schema({
     review: {
         type: String,
         trim:true
+       
     },
     isDeleted: {
         type: Boolean,
         default: false
     },
-});
+},{timestamps:true});
 
-module.exports = new mongoose.model("reviewCollection", reviewModel);
+module.exports = new mongoose.model("reviewData", reviewModel);

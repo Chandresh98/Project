@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose")
 
 const userModel = new mongoose.Schema({
@@ -22,8 +23,16 @@ const userModel = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        lowercase:true,
+        validate: {
+            validator: function (v) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+            },
+            message: "Please enter a valid email"
+        },
         unique: true,
         trim:true
+
     },
     password: {
         type: String,
@@ -34,15 +43,21 @@ const userModel = new mongoose.Schema({
     },
     address: {
         street: {
-            type: String
+            type: String,
+            trim:true
         },
         city: {
-            type: String
+            type: String,
+            trim:true
         },
         pincode: {
-            type: String
+            type: String,
+            trim:true
+   
         }
+   
     }
 
-})
-module.exports = mongoose.model("userCollection", userModel)
+
+},{timestamps:true})
+module.exports = mongoose.model("usermbook", userModel)

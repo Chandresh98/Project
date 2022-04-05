@@ -10,14 +10,19 @@ const createBooks = async (req, res) => {
     if (Object.keys(data) == 0) { return res.status(400).send({ status: false, message: "No input provided by user", }); }
     const { title, excerpt, userId, ISBN, category, subcategory, releasedAt } = data;  // destructuring data
     // checking title is given by user or not if given then its shout check the title should unique at 17-18 line
+    
     if (!validation.valid(title)) { return res.status(400).send({ status: false, message: "No title provided by user", }) }
     const existTitle = await bookModel.findOne({ title: title })
+   
     if (existTitle) { return res.status(400).send({ status: false, message: " Title already exist", }) }
     // excerpt is provided or not
+   
     if (!validation.valid(excerpt)) { return res.status(400).send({ status: false, message: "No excerpt provided by user", }) }
     // user id is provided or not
+    
     if (!validation.valid(userId)) { return res.status(400).send({ status: false, message: "No userId provided by user", }) }
     // checking that the userid is provided by user is _id or any rendom number
+    
     if (!validation.isValidObjectId(userId)) { return res.status(400).send({ status: false, message: "Not  Valid Object Id", }); }
     // checking the user is present in database or Not
     const user = await userModel.findById(userId)
@@ -142,7 +147,7 @@ const updateBooks = async (req, res) => {
 
         filter["releasedAt"] = releasedAt
       }
-      console.log(filter)
+     
       const updateData = await bookModel.findOneAndUpdate({ _id: id }, {
         $set: filter
       }, { new: true })

@@ -13,7 +13,7 @@ const registerUser = async (req, res) => {
         const { title, name, phone, email, password } = data;
         // line no 16-20 check the input field is provided or not
         if (!validation.valid(title)) { return res.status(400).send({ status: false, message: "input title" }) }
-        if (title != "Mr" && "Mrs" && "Miss") { return res.status(400).send({ Satus: false, message: "Title can only be Mr , Mrs and Miss" }) }
+        if (!validation.isValidTitle(title)) { return res.status(400).send({ Satus: false, message: "Title can only be Mr , Mrs and Miss" }) }
         if (!validation.valid(name)) { return res.status(400).send({ status: false, message: "input name" }) }
         if (!validation.valid(phone)) { return res.status(400).send({ status: false, message: "input phone" }) }
         if (!validation.isValidPhone(phone)) {
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
         if (emailExt) { return res.status(400).send({ status: false, message: " Email already exists " }) }
         // checking the length which is atleast 8 or almost 15 character
         if (!validation.valid(password)) { return res.status(400).send({ status: false, msg: "input password" }) }
-        if (password.length < 8 || password.length > 15) { return res.status(400).send({ status: false, message: "Password minimum length is 5 and maximum length is 15" }) }
+        if (password.length < 8 || password.length > 15) { return res.status(400).send({ status: false, message: "Password minimum length is 8 and maximum length is 15" }) }
 
 
         let saveData = await userModel.create(data);
